@@ -11,6 +11,15 @@ This will start the api at port 5000 of localhost.
 
 ## 2. Use Post and load json in format
 
+Category : [Value : Int, Status : Int]
+
+Status should be :
+
+    0 : Neutral
+    1 : Maximise
+    -1 : Minimise
+
+
 Example
 
     {
