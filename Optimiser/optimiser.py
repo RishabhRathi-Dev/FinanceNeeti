@@ -123,40 +123,46 @@ def create_parameter_ranges(parameter, category):
 
                 # If maximizing then min should be max of min or what we already have and max should be greater and when minimizing then max should be current value and min should be nearly global min
 
+                print(parameter_ranges)
+
                 if 'Rent' in key and '_min' not in key:
-                    parameter_ranges['max'][positions['Rent']] = parameter['Rent'][0] * 1.5 if parameter['Rent'][1] else value
+                    parameter_ranges['max'][positions['Rent']] = parameter['Rent'][0] if parameter['Rent'][1] else value
                 elif 'Rent' in key and '_min' in key:
                     parameter_ranges['min'][positions['Rent']] = min(value, parameter['Rent'][0]) if parameter['Rent'][1] else value 
 
                 elif 'Petrol' in key and '_min' not in key:
-                    parameter_ranges['max'][positions['Petrol/Diesel']] = parameter['Petrol/Diesel'][0] * 1.5 if parameter['Petrol/Diesel'][1] else value
+                    parameter_ranges['max'][positions['Petrol/Diesel']] = parameter['Petrol/Diesel'][0] if parameter['Petrol/Diesel'][1] else value
                 elif 'Petrol' in key and '_min' in key:
                     parameter_ranges['min'][positions['Petrol/Diesel']] = min(value, parameter['Petrol/Diesel'][0]) if parameter['Petrol/Diesel'][1] else value
 
                 elif 'Public Transport' in key and '_min' not in key:
-                    parameter_ranges['max'][positions['Public Transport']] = parameter['Public Transport'][0] * 1.5 if parameter['Public Transport'][1] else value
+                    parameter_ranges['max'][positions['Public Transport']] = parameter['Public Transport'][0] if parameter['Public Transport'][1] else value
                 elif 'Public Transport' in key and '_min' in key:
                     parameter_ranges['min'][positions['Public Transport']] = min(value, parameter['Public Transport'][0]) if parameter['Public Transport'][1] else value
 
                 elif 'Groceries' in key and '_min' not in key:
-                    parameter_ranges['max'][positions['Groceries']] = parameter['Groceries'][0] * 1.5 if parameter['Groceries'][1] else value
+                    parameter_ranges['max'][positions['Groceries']] = parameter['Groceries'][0] if parameter['Groceries'][1] else value
                 elif 'Groceries' in key and '_min' in key:
                     parameter_ranges['min'][positions['Groceries']] = min(value, parameter['Groceries'][0]) if parameter['Groceries'][1] else value
 
                 elif 'Leisure' in key and '_min' not in key:
-                    parameter_ranges['max'][positions['Leisure']] = parameter['Leisure'][0] * 1.5 if parameter['Leisure'][1] else value
+                    parameter_ranges['max'][positions['Leisure']] = parameter['Leisure'][0] if parameter['Leisure'][1] else value
                 elif 'Leisure' in key and '_min' in key:
                     parameter_ranges['min'][positions['Leisure']] = min(value, parameter['Leisure'][0]) if parameter['Leisure'][1] else value
 
                 elif 'Personal' in key and '_min' not in key:
-                    parameter_ranges['max'][positions['Personal']] = parameter['Personal'][0] * 1.5 if parameter['Personal'][1] else value
+                    parameter_ranges['max'][positions['Personal']] = parameter['Personal'][0] if parameter['Personal'][1] else value
                 elif 'Personal' in key and '_min' in key:
                     parameter_ranges['min'][positions['Personal']] = min(value, parameter['Personal'][0]) if parameter['Personal'][1] else value
 
                 elif 'save monthly' in key and '_min' not in key:
-                    parameter_ranges['max'][positions['Savings']] = parameter['Savings'][0] * 1.5 if parameter['Savings'][1] else value
+                    parameter_ranges['max'][positions['Savings']] = parameter['Savings'][0] if parameter['Savings'][1] else value
                 elif 'save monthly' in key and '_min' in key:
                     parameter_ranges['min'][positions['Savings']] = min(value, parameter['Savings'][0]) if parameter['Savings'][1] else value
+
+                print(parameter_ranges)
+
+                print("")
 
             else :
                 break
@@ -265,11 +271,11 @@ def optimise(salary, parameter):
     # Configure the optimization algorithm (NSGA-II)
     algorithm = NSGAII(
         problem=financial_problem,
-        population_size=3000,
-        offspring_population_size=200,
-        crossover=SBXCrossover(probability=0.9, distribution_index=20),
-        mutation=PolynomialMutation(probability=1.0 / financial_problem.number_of_variables, distribution_index=20),
-        termination_criterion=StoppingByEvaluations(max_evaluations=2000)
+        population_size=5000,
+        offspring_population_size=1000,
+        crossover=SBXCrossover(probability=0.9, distribution_index=50),
+        mutation=PolynomialMutation(probability=1.0 / financial_problem.number_of_variables, distribution_index=50),
+        termination_criterion=StoppingByEvaluations(max_evaluations=5000)
     )
 
     # Run the optimization
@@ -278,7 +284,7 @@ def optimise(salary, parameter):
     # Get the results
     solutions = algorithm.get_result()
 
-    condition_satisfied_solutions = [solution.variables for solution in solutions if salary - 3000 <= sum(solution.variables) - salary <= salary + 1000]
+    condition_satisfied_solutions = [solution.variables for solution in solutions if salary - 2500 <= sum(solution.variables) - salary <= salary + 2500]
 
     if condition_satisfied_solutions:
         # Calculate the element-wise average

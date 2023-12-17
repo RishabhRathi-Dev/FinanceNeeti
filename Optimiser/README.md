@@ -19,6 +19,7 @@ Status should be :
     1 : Maximise
     -1 : Minimise
 
+Note: Salary should always be neutral
 
 Example
 
