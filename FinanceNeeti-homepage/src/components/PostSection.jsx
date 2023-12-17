@@ -111,7 +111,7 @@ const UserPosts = () => {
                     
                     <div className="mb-4">
                       <h3 className="text-2xl font-bold">{post.heading}</h3>
-                      <p className="text-gray-800">{post.content}</p>
+                      <p className="text-gray-800 dark:text-white">{post.content}</p>
                     </div>
                     
                     <div className="mb-4 flex items-center">
