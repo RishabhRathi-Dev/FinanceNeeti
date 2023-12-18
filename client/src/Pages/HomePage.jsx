@@ -9,12 +9,6 @@ import Footer from "../components/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const lineStyle = {
-  border: "none",
-  borderTop: "1px solid navy",
-  margin: 0,
-};
-
 export default function HomePage() {
   const [orderPopup, setOrderPopup] = React.useState(false);
 
@@ -34,10 +28,8 @@ export default function HomePage() {
   return (
     <>
       <Navbar handleOrderPopup={handleOrderPopup} />
-      <hr style={lineStyle} />
       <Hero handleOrderPopup={handleOrderPopup} />
       <ExpenseOptimizer />
-      <hr style={lineStyle} />
       <News handleOrderPopup={handleOrderPopup} />
       <Posts />
       <Testimonial />

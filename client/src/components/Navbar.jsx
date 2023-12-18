@@ -25,6 +25,11 @@ const Menu = [
   },
 ];
 
+const lineStyle = {
+  borderTop: "1px solid navy",
+  margin: 0,
+};
+
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
 
@@ -95,6 +100,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+        <hr style={lineStyle} />
       </div>
     </>
   );

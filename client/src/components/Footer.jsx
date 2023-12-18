@@ -5,12 +5,17 @@ import {
   FaLinkedin,
   FaTwitter,
   FaLocationArrow,
-  FaMobileAlt,
 } from "react-icons/fa";
 import footerLogo from "../assets/financeneeti-logo.png";
 
 const Footer = () => {
+  const lineStyle = {
+    borderTop: "1px solid navy",
+    margin: 0,
+  };
   return (
+    <>
+    <hr style={lineStyle} />
     <div className="bg-navbg text-black dark:bg-gray-950 dark:text-white">
       <section className="max-w-[1200px] mx-auto">
         <div className="grid md:grid-cols-3 py-5">
@@ -66,6 +71,7 @@ const Footer = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

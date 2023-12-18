@@ -1,13 +1,13 @@
 const NewsCard = (props) => {
   return (
     <>
-      <div className="max-w-sm p-2 px-4 py-4 bg-white border border-gray-200 rounded-lg shadow-lg">
+      <div className="max-w-sm p-2 px-4 py-4 bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-950 dark:shadow-white dark:shadow-md">
         <img
           className="object-fill h-48 w-90 lg:h-40 lg:w-60 rounded block m-auto"
           src={props.newsImage}
           alt=""
         />
-        <h6 className="mb-2 mt-3 text-xl font-medium tracking-tight text-gray-900">
+        <h6 className="mb-2 mt-3 text-xl font-medium tracking-tight text-gray-900 dark:text-white">
           {props.headline}
         </h6>
         <p className=" mt-4 mb-3 font-normal text-gray-700 dark:text-gray-400">
