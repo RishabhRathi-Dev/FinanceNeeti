@@ -86,15 +86,15 @@ const UserPosts = () => {
   return (
     <div className="py-10 dark:bg-gray-900 dark:text-white">
       <div className="container mx-auto pt-8">
-        <div className="text-left mb-10">
+        <div className="text-left mb-10 max-w-[500px]">
           <h1 className="text-5xl font-bold">Posts from users</h1>
         </div>
 
-        <div className="align-center mx-auto">
+        <div className="align-center max-w-[1200px] mx-auto">
           <Slider {...settings}>
             {userPostsData.map((post) => (
               <div key={post.id} className="my-6 flex items-center justify-center">
-                <div className="bg-white dark:bg-gray-950 rounded-2xl shadow-xl duration-high p-8 flex">
+                <div className="bg-white dark:bg-gray-950 rounded-2xl shadow-xl duration-high max-w-[1200px] p-8 flex">
 
                   <div className="w-3/4 pr-6">
                     <div className="flex items-center mb-4">

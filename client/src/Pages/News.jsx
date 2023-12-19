@@ -41,10 +41,10 @@ const News = () => {
                     href={slide.url}
                   >
                   <div className="mt-52 mr-20 text-left">
-                    <div className=" mb-2 text-2xl font-medium bg-opacity-50  inline text-black bg-slate-500 text-left rounded dark:text-white">
+                    <div className=" mb-2 text-2xl font-medium bg-opacity-50  inline text-black bg-slate-500 text-left rounded">
                       {slide.title}
                     </div>
-                    <div className="mb-3 text-lg text-black dark:text-gray-400 bg-slate-100 bg-opacity-50 mt-4 dark:text-white">
+                    <div className="mb-3 text-lg text-black bg-slate-100 bg-opacity-50 mt-4">
                       {slide.description}
                       {"..."}
                     </div>
